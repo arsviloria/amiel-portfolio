@@ -1,0 +1,527 @@
+{
+  "version": 1,
+  "workspaceRoot": "c:\\Users\\1\\Desktop\\amiel-portfolio",
+  "baseline": {
+    "files": {},
+    "apiIndex": {},
+    "graphs": {}
+  },
+  "working": {
+    "files": {
+      "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js": {
+        "path": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+        "hash": "405eafc150c16a3711a4f99524a85bcd2af5db7155c512fba36da72b915def2f",
+        "mtime": 1795072444032,
+        "content": "/* ============================================================\r\n   script.js - what your website DOES\r\n   ------------------------------------------------------------\r\n   Plain JavaScript, no libraries. Each block below is independent,\r\n   so if you break one, the others keep working.\r\n   Open the browser DevTools (F12) > Console to see errors.\r\n   ============================================================ */\r\n\r\n// 1. Mobile menu: show/hide the links when the ☰ button is tapped\r\nconst navToggle = document.getElementById(\"navToggle\");\r\nconst navLinks = document.getElementById(\"navLinks\");\r\n\r\nnavToggle.addEventListener(\"click\", () => {\r\n  const isOpen = navLinks.classList.toggle(\"is-open\");\r\n  navToggle.setAttribute(\"aria-expanded\", String(isOpen));\r\n});\r\n\r\n// Close the menu after a link is chosen (nicer on phones)\r\nnavLinks.querySelectorAll(\"a\").forEach((link) => {\r\n  link.addEventListener(\"click\", () => {\r\n    navLinks.classList.remove(\"is-open\");\r\n    navToggle.setAttribute(\"aria-expanded\", \"false\");\r\n  });\r\n});\r\n\r\n// 2. Light/dark theme switch, remembered in this browser (localStorage)\r\nconst themeToggle = document.getElementById(\"themeToggle\");\r\n\r\nfunction applyTheme(theme) {\r\n  document.documentElement.setAttribute(\"data-theme\", theme);\r\n  themeToggle.textContent = theme === \"dark\" ? \"☀️\" : \"🌙\";\r\n}\r\n\r\nlet savedTheme = \"light\";\r\ntry {\r\n  savedTheme = localStorage.getItem(\"theme\") || \"light\";\r\n} catch (error) {\r\n  // Some browsers block storage (private mode). The site still works.\r\n}\r\napplyTheme(savedTheme);\r\n\r\nthemeToggle.addEventListener(\"click\", () => {\r\n  const next = document.documentElement.getAttribute(\"data-theme\") === \"dark\" ? \"light\" : \"dark\";\r\n  applyTheme(next);\r\n  try {\r\n    localStorage.setItem(\"theme\", next);\r\n  } catch (error) {\r\n    /* ignore */\r\n  }\r\n});\r\n\r\n// 3. Greeting that depends on the time of day\r\nconst hour = new Date().getHours();\r\nconst greeting = hour < 12 ? \"Good morning!\" : hour < 18 ? \"Good afternoon!\" : \"Good evening!\";\r\ndocument.getElementById(\"greeting\").textContent = greeting;\r\n\r\n// 4. Fun facts button\r\n// CUSTOMIZE: write your own fun facts here. Keep each one inside \"quotes\",\r\n// separated by commas.\r\nconst funFacts = [\r\n  \"I love eating fried frog legs\",\r\n  \"I have a mole on my left butt cheek\",\r\n  \"My highest rank in MLBB is Epic IV 3 stars\",\r\n  \"Brrt brrrrt brrrrt brrrrrt\",\r\n  \"GRRRRRRRRRAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHH\",\r\n  \"I am very employable\",\r\n  \"I earned $0 yesterday\",\r\n];\r\nlet factIndex = 0;\r\n\r\ndocument.getElementById(\"funFactButton\").addEventListener(\"click\", () => {\r\n  document.getElementById(\"funFact\").textContent = funFacts[factIndex];\r\n  factIndex = (factIndex + 1) % funFacts.length; // go back to the first fact after the last\r\n});\r\n\r\n// 5. Always show the current year in the footer\r\ndocument.getElementById(\"year\").textContent = new Date().getFullYear();",
+        "symbols": {
+          "functions": [
+            {
+              "name": "applyTheme",
+              "kind": "function",
+              "span": {
+                "start": 1172,
+                "end": 1327
+              },
+              "signature": "function applyTheme(theme)",
+              "bodyText": "{ document.documentElement.setAttribute(\"data-theme\", theme); themeToggle.textContent = theme === \"dark\" ? \"☀️\" : \"🌙\"; }",
+              "stableKey": "function:applyTheme"
+            }
+          ],
+          "variables": [
+            {
+              "name": "navToggle",
+              "kind": "variable",
+              "span": {
+                "start": 0,
+                "end": 0
+              },
+              "signature": "var navToggle",
+              "bodyText": "navToggle = document.getElementById(\"navToggle\")",
+              "stableKey": "variable:navToggle"
+            },
+            {
+              "name": "navLinks",
+              "kind": "variable",
+              "span": {
+                "start": 0,
+                "end": 0
+              },
+              "signature": "var navLinks",
+              "bodyText": "navLinks = document.getElementById(\"navLinks\")",
+              "stableKey": "variable:navLinks"
+            },
+            {
+              "name": "themeToggle",
+              "kind": "variable",
+              "span": {
+                "start": 0,
+                "end": 0
+              },
+              "signature": "var themeToggle",
+              "bodyText": "themeToggle = document.getElementById(\"themeToggle\")",
+              "stableKey": "variable:themeToggle"
+            },
+            {
+              "name": "savedTheme",
+              "kind": "variable",
+              "span": {
+                "start": 0,
+                "end": 0
+              },
+              "signature": "var savedTheme",
+              "bodyText": "savedTheme = \"light\"",
+              "stableKey": "variable:savedTheme"
+            },
+            {
+              "name": "hour",
+              "kind": "variable",
+              "span": {
+                "start": 0,
+                "end": 0
+              },
+              "signature": "var hour",
+              "bodyText": "hour = new Date().getHours()",
+              "stableKey": "variable:hour"
+            },
+            {
+              "name": "greeting",
+              "kind": "variable",
+              "span": {
+                "start": 0,
+                "end": 0
+              },
+              "signature": "var greeting",
+              "bodyText": "greeting = hour < 12 ? \"Good morning!\" : hour < 18 ? \"Good afternoon!\" : \"Good evening!\"",
+              "stableKey": "variable:greeting"
+            },
+            {
+              "name": "funFacts",
+              "kind": "variable",
+              "span": {
+                "start": 0,
+                "end": 0
+              },
+              "signature": "var funFacts",
+              "bodyText": "funFacts = [ \"I love eating fried frog legs\", \"I have a mole on my left butt cheek\", \"My highest rank in MLBB is Epic IV 3 stars\", \"Brrt brrrrt brrrrt brrrrrt\", \"GRRRRRRRRRAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHH\", \"I am very employable\", \"I earned $0 yesterday\", ]",
+              "stableKey": "variable:funFacts"
+            },
+            {
+              "name": "factIndex",
+              "kind": "variable",
+              "span": {
+                "start": 0,
+                "end": 0
+              },
+              "signature": "var factIndex",
+              "bodyText": "factIndex = 0",
+              "stableKey": "variable:factIndex"
+            }
+          ],
+          "imports": []
+        }
+      }
+    },
+    "apiIndex": {},
+    "graphs": {
+      "file:c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js": {
+        "graphId": "file:c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+        "type": "file",
+        "nodes": [
+          {
+            "id": "file_1",
+            "type": "file",
+            "label": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+            "subtitle": "«file diagram» top-level dependencies",
+            "body": "Imports / Variables / Functions",
+            "diff": "unchanged",
+            "anchor": {
+              "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js"
+            }
+          },
+          {
+            "id": "node_2",
+            "type": "variable",
+            "label": "navToggle",
+            "subtitle": "«variable»",
+            "body": "navToggle = document.getElementById(\"navToggle\")",
+            "diff": "unchanged",
+            "anchor": {
+              "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+              "symbol": "navToggle"
+            }
+          },
+          {
+            "id": "node_3",
+            "type": "variable",
+            "label": "navLinks",
+            "subtitle": "«variable»",
+            "body": "navLinks = document.getElementById(\"navLinks\")",
+            "diff": "unchanged",
+            "anchor": {
+              "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+              "symbol": "navLinks"
+            }
+          },
+          {
+            "id": "node_4",
+            "type": "variable",
+            "label": "themeToggle",
+            "subtitle": "«variable»",
+            "body": "themeToggle = document.getElementById(\"themeToggle\")",
+            "diff": "unchanged",
+            "anchor": {
+              "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+              "symbol": "themeToggle"
+            }
+          },
+          {
+            "id": "node_5",
+            "type": "variable",
+            "label": "savedTheme",
+            "subtitle": "«variable»",
+            "body": "savedTheme = \"light\"",
+            "diff": "unchanged",
+            "anchor": {
+              "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+              "symbol": "savedTheme"
+            }
+          },
+          {
+            "id": "node_6",
+            "type": "variable",
+            "label": "hour",
+            "subtitle": "«variable»",
+            "body": "hour = new Date().getHours()",
+            "diff": "unchanged",
+            "anchor": {
+              "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+              "symbol": "hour"
+            }
+          },
+          {
+            "id": "node_7",
+            "type": "variable",
+            "label": "greeting",
+            "subtitle": "«variable»",
+            "body": "greeting = hour < 12 ? \"Good morning!\" : hour < 18 ? \"Good afternoon!\" : \"Good evening!\"",
+            "diff": "unchanged",
+            "anchor": {
+              "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+              "symbol": "greeting"
+            }
+          },
+          {
+            "id": "node_8",
+            "type": "variable",
+            "label": "funFacts",
+            "subtitle": "«variable»",
+            "body": "funFacts = [ \"I love eating fried frog legs\", \"I have a mole on my left butt cheek\", \"My highest rank in MLBB is Epic IV 3 stars\", \"Brrt brrrrt brrrrt brrrrrt\", \"GRRRRRRRRRAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHH\", \"I am very employable\", \"I earned $0 yesterday\", ]",
+            "diff": "unchanged",
+            "anchor": {
+              "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+              "symbol": "funFacts"
+            }
+          },
+          {
+            "id": "node_9",
+            "type": "variable",
+            "label": "factIndex",
+            "subtitle": "«variable»",
+            "body": "factIndex = 0",
+            "diff": "unchanged",
+            "anchor": {
+              "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+              "symbol": "factIndex"
+            }
+          },
+          {
+            "id": "section_10",
+            "type": "section",
+            "label": "Variables (8)",
+            "diff": "unchanged",
+            "anchor": {
+              "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js"
+            }
+          },
+          {
+            "id": "node_20",
+            "type": "function",
+            "label": "applyTheme",
+            "subtitle": "«function»",
+            "body": "function applyTheme(theme)",
+            "diff": "unchanged",
+            "anchor": {
+              "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+              "symbol": "applyTheme"
+            }
+          },
+          {
+            "id": "section_21",
+            "type": "section",
+            "label": "Functions (1)",
+            "diff": "unchanged",
+            "anchor": {
+              "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "edge_11",
+            "source": "file_1",
+            "target": "section_10",
+            "label": "contains",
+            "edgeType": "contains",
+            "diff": "unchanged"
+          },
+          {
+            "id": "edge_12",
+            "source": "section_10",
+            "target": "node_2",
+            "label": "contains",
+            "edgeType": "contains",
+            "diff": "unchanged"
+          },
+          {
+            "id": "edge_13",
+            "source": "section_10",
+            "target": "node_3",
+            "label": "contains",
+            "edgeType": "contains",
+            "diff": "unchanged"
+          },
+          {
+            "id": "edge_14",
+            "source": "section_10",
+            "target": "node_4",
+            "label": "contains",
+            "edgeType": "contains",
+            "diff": "unchanged"
+          },
+          {
+            "id": "edge_15",
+            "source": "section_10",
+            "target": "node_5",
+            "label": "contains",
+            "edgeType": "contains",
+            "diff": "unchanged"
+          },
+          {
+            "id": "edge_16",
+            "source": "section_10",
+            "target": "node_6",
+            "label": "contains",
+            "edgeType": "contains",
+            "diff": "unchanged"
+          },
+          {
+            "id": "edge_17",
+            "source": "section_10",
+            "target": "node_7",
+            "label": "contains",
+            "edgeType": "contains",
+            "diff": "unchanged"
+          },
+          {
+            "id": "edge_18",
+            "source": "section_10",
+            "target": "node_8",
+            "label": "contains",
+            "edgeType": "contains",
+            "diff": "unchanged"
+          },
+          {
+            "id": "edge_19",
+            "source": "section_10",
+            "target": "node_9",
+            "label": "contains",
+            "edgeType": "contains",
+            "diff": "unchanged"
+          },
+          {
+            "id": "edge_22",
+            "source": "file_1",
+            "target": "section_21",
+            "label": "contains",
+            "edgeType": "contains",
+            "diff": "unchanged"
+          },
+          {
+            "id": "edge_23",
+            "source": "section_21",
+            "target": "node_20",
+            "label": "contains",
+            "edgeType": "contains",
+            "diff": "unchanged"
+          },
+          {
+            "id": "edge_24",
+            "source": "node_20",
+            "target": "node_4",
+            "label": "uses",
+            "edgeType": "uses",
+            "diff": "unchanged"
+          }
+        ],
+        "anchors": {
+          "file_1": {
+            "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js"
+          },
+          "node_2": {
+            "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+            "symbol": "navToggle"
+          },
+          "node_3": {
+            "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+            "symbol": "navLinks"
+          },
+          "node_4": {
+            "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+            "symbol": "themeToggle"
+          },
+          "node_5": {
+            "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+            "symbol": "savedTheme"
+          },
+          "node_6": {
+            "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+            "symbol": "hour"
+          },
+          "node_7": {
+            "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+            "symbol": "greeting"
+          },
+          "node_8": {
+            "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+            "symbol": "funFacts"
+          },
+          "node_9": {
+            "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+            "symbol": "factIndex"
+          },
+          "section_10": {
+            "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js"
+          },
+          "node_20": {
+            "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+            "symbol": "applyTheme"
+          },
+          "section_21": {
+            "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js"
+          }
+        },
+        "meta": {
+          "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+          "fileName": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js"
+        }
+      },
+      "flow:c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js:applyTheme": {
+        "graphId": "flow:c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js:applyTheme",
+        "type": "flow",
+        "nodes": [
+          {
+            "id": "start_1",
+            "type": "terminal",
+            "label": "Start\napplyTheme(theme)",
+            "diff": "unchanged",
+            "anchor": {
+              "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+              "symbol": "applyTheme"
+            }
+          },
+          {
+            "id": "end_2",
+            "type": "terminal",
+            "label": "End",
+            "diff": "unchanged",
+            "anchor": {
+              "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+              "symbol": "applyTheme"
+            }
+          },
+          {
+            "id": "stmt_3",
+            "type": "statement",
+            "label": "document.documentElement.setAttribute(\"data-theme\", theme);",
+            "diff": "unchanged",
+            "anchor": {
+              "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+              "span": {
+                "start": 32,
+                "end": 91
+              }
+            }
+          },
+          {
+            "id": "stmt_4",
+            "type": "statement",
+            "label": "themeToggle.textContent = theme === \"dark\" ? \"☀️\" : \"🌙\";",
+            "diff": "unchanged",
+            "anchor": {
+              "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+              "span": {
+                "start": 95,
+                "end": 152
+              }
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "edge_5",
+            "source": "stmt_3",
+            "target": "stmt_4",
+            "edgeType": "flow",
+            "diff": "unchanged"
+          },
+          {
+            "id": "edge_6",
+            "source": "start_1",
+            "target": "stmt_3",
+            "edgeType": "flow",
+            "diff": "unchanged"
+          },
+          {
+            "id": "edge_7",
+            "source": "stmt_4",
+            "target": "end_2",
+            "edgeType": "flow",
+            "diff": "unchanged"
+          }
+        ],
+        "anchors": {
+          "start_1": {
+            "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+            "symbol": "applyTheme"
+          },
+          "end_2": {
+            "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+            "symbol": "applyTheme"
+          },
+          "stmt_3": {
+            "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+            "span": {
+              "start": 32,
+              "end": 91
+            }
+          },
+          "stmt_4": {
+            "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+            "span": {
+              "start": 95,
+              "end": 152
+            }
+          }
+        },
+        "meta": {
+          "filePath": "c:\\Users\\1\\Desktop\\amiel-portfolio\\site\\script.js",
+          "functionName": "applyTheme"
+        }
+      }
+    }
+  },
+  "comments": [],
+  "settings": {
+    "autoUpdate": true
+  }
+}
